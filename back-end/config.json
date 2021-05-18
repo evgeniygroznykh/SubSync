@@ -1,0 +1,20 @@
+{
+	"tv_channels":
+	[
+		{
+		"channelName":"tnt",
+		"channelClipDirectory":"C:\\Users\\e_gro\\Desktop\\tnt\\clip.dir",
+		"channelSubtitleDirectory":"C:\\Users\\e_gro\\Desktop\\tnt\\clip.dir\\subtitle.dir"
+		},
+		{
+		"channelName":"2x2",
+		"channelClipDirectory":"C:\\Users\\e_gro\\Desktop\\2x2\\clip.dir",
+		"channelSubtitleDirectory":"C:\\Users\\e_gro\\Desktop\\2x2\\clip.dir\\subtitle.dir"
+		},
+		{
+		"channelName":"tnt4",
+		"channelClipDirectory":"C:\\Users\\e_gro\\Desktop\\tnt4\\clip.dir",
+		"channelSubtitleDirectory":"C:\\Users\\e_gro\\Desktop\\tnt4\\clip.dir\\subtitle.dir"
+		}
+	]
+}
