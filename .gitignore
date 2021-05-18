@@ -1,3 +1,6 @@
+# Configuration files
+config.json
+
 # Node modules
 node_modules/
 front-end/node_modules
