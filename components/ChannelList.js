@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import { Container } from 'react-bootstrap'
-
+import ChannelListItem from "./ChannelListItem"
 
 export default function ChannelList() {
     const [error, setError] = useState(null)
     const [channels, setChannels] = useState([])
-    const [selectedChannel, setSelectedChannel] = useState(channels ? channels[0] : null)
+    const [selectedChannel, setSelectedChannel] = useState("")
 
     function selectChannel(event) {
-        setSelectedChannel(event.target.innerText)
+        setSelectedChannel(event.target.id)
     }
 
     useEffect(() => {
@@ -25,19 +25,24 @@ export default function ChannelList() {
     }, [])
 
     if (error) {
-        return(
+        return (
             <div>
                 {error.message}
             </div>
         )
     }
     else {
-        return(
+        return (
             <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
                 <ul id="channelList">
-                    {channels.map((channel, index) => (
-                        <li key={index} onClick={selectChannel}>{channel}</li>
-                    ))}
+                    {
+                        channels.map((channel, index) => {
+                                return (
+                                    <ChannelListItem channel={channel} selected_channel_index={index} onclick_func={selectChannel} />
+                                )
+                            }
+                        )
+                    }
                 </ul>
             </Container>
         )

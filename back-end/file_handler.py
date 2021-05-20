@@ -19,7 +19,7 @@ def get_media_files_from_server(file_path, query_target):
 def get_subtitle_files_from_source(file_path):
     try:
         subtitles_files_from_src = [name
-                            for root, dirs, files in os.walk(file_path)
+                            for _, _, files in os.walk(file_path)
                             for name in files
                             if name.endswith(".stl")]
         return subtitles_files_from_src
