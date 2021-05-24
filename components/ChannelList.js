@@ -33,8 +33,8 @@ export default function ChannelList() {
     }
     else {
         return (
-            <Container className="d-flex justify-content-center align-items-center" style={{minHeight: "100vh"}}>
-                <ul id="channelList">
+            <Container style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                <ul id="channelList" class="centralized-content">
                     {
                         channels.map((channel, index) => {
                                 return (
