@@ -25,8 +25,8 @@ export default function ChannelListItem (props) {
 
     return (    
         <Container style={ img_container_style }>   
-            <li key={props.selected_channel_index} class="centralized-content">
-                <img src={imageUrls[props.channel.channelName]} id={props.channel.channelName} onClick={props.onclick_func} style={{ cursor: "pointer" }}></img>
+            <li className="centralized-content">
+                <img src={imageUrls[props.channel.channelName]} id={props.channel.channelName} onClick={props.onclick_func} style={{ cursor: "pointer" }} alt=""></img>
             </li>
         </Container>
     )

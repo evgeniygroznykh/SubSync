@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from 'react'
+import appConfig from './react-app-config'
 import { Container } from 'react-bootstrap'
 import ChannelListItem from "./ChannelListItem"
+import MediaList from './MediaList'
+
 
 export default function ChannelList() {
     const [error, setError] = useState(null)
     const [channels, setChannels] = useState([])
-    const [selectedChannel, setSelectedChannel] = useState("")
+    const [selectedChannel, setSelectedChannel] = useState(channels[0])
 
     function selectChannel(event) {
         setSelectedChannel(event.target.id)
     }
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8001/get_channels')
+        const apiBaseUrl = appConfig.api_base_url
+
+        fetch(apiBaseUrl + '/get_channels')
         .then(res => res.json())
         .then(
             (result) => {
@@ -33,17 +38,22 @@ export default function ChannelList() {
     }
     else {
         return (
-            <Container style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center"}}>
-                <ul id="channelList" class="centralized-content">
-                    {
-                        channels.map((channel, index) => {
-                                return (
-                                    <ChannelListItem channel={channel} selected_channel_index={index} onclick_func={selectChannel} />
+            <Container>
+                <Container style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center"}}>
+                    <Container>
+                        <ul id="channelList" className="centralized-content">
+                            {
+                                channels.map((channel, index) => {
+                                        return (
+                                            <ChannelListItem key={index} channel={channel} onclick_func={selectChannel} />
+                                        )
+                                    }
                                 )
                             }
-                        )
-                    }
-                </ul>
+                        </ul>
+                    </Container>
+                </Container>
+                <MediaList selected_channel={selectedChannel}/>
             </Container>
         )
     }
