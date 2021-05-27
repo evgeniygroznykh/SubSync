@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 from routes import ROUTE_BLUEPRINTS
-from views.tasks import TASKS
+from tasks import TASKS
 from setup import register_blueprints, run_scheduler
 
 

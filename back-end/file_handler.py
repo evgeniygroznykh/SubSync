@@ -26,6 +26,9 @@ def get_subtitle_files_from_source(file_path):
     except:
         return f"Error: can't get subtitle list with given subtitle source directory path. {file_path}"
 
+def get_clip_filename_from_subtitlename(subtitle_name):
+    return f"{subtitle_name.split('_')[0]}.mxf"
+
 def get_subtitle_filename_from_clipname(clip_name, language):
     return f"{clip_name.split('.')[0]}_{language}.stl"
 

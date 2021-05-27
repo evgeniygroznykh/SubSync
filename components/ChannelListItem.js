@@ -4,6 +4,9 @@ import tntlogo from './img/tntlogo.jpg'
 import tnt4logo from './img/tnt4logo.jpg'
 import _2x2logo from './img/_2x2logo.jpg'
 import mplogo from './img/mplogo.jpg'
+import tv3logo from './img/tv3logo.jpg'
+import fridaylogo from './img/fridaylogo.jpg'
+
 
 export default function ChannelListItem (props) {
     const img_container_style = {
@@ -17,10 +20,12 @@ export default function ChannelListItem (props) {
     }
 
     const imageUrls = {
-        "tnt": tntlogo,
-        "tnt4" : tnt4logo,
+        "TNT": tntlogo,
+        "TNT4" : tnt4logo,
         "2x2" : _2x2logo,
-        "match_premier" : mplogo
+        "Match Premiere" : mplogo,
+        "TV3" : tv3logo,
+        "Friday" : fridaylogo
     }
 
     return (    

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import appConfig from './react-app-config'
+import videoimg from './img/video.jpg'
+import subtitleimg from './img/subtitle.jpg'
  
 
 export default function MediaList (props) {
@@ -58,9 +60,11 @@ export default function MediaList (props) {
                             {
                                 clips.map((clip, index) => {
                                     return (
-                                        <tr key={index}>
-                                            <td>{clip}</td>
-                                        </tr>
+                                        <div>
+                                            <tr key={index}>
+                                                <td><span><img className="icon" src={videoimg} alt=""></img>{clip}</span></td>
+                                            </tr>
+                                        </div>
                                         )
                                     }
                                 )
@@ -79,9 +83,11 @@ export default function MediaList (props) {
                         {
                             subtitles.map((subtitle, index) => {
                                 return (
-                                    <tr key={index}>
-                                        <td>{subtitle}</td>
-                                    </tr>
+                                    <div>
+                                        <tr key={index}>
+                                            <td><span><img className="icon" src={subtitleimg} alt=""></img>{subtitle}</span></td>
+                                        </tr>
+                                    </div>
                                     )
                                 }
                             )
