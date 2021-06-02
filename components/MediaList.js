@@ -1,68 +1,66 @@
 import React, { useState, useEffect } from 'react'
-import appConfig from './react-app-config'
+import { Container } from 'react-bootstrap'
 import videoimg from './img/video.jpg'
 import subtitleimg from './img/subtitle.jpg'
+import loading from './img/loading_animation.gif'
  
 
 export default function MediaList (props) {
-    const [clips, setClips] = useState([])
-    const [subtitles, setSubtitles] = useState([])
-    const [error, setError] = useState("")
-
     const selected_channel = props.selected_channel ? props.selected_channel : ""
+    const [isChannelSelected, setIsChannelSelected] = useState(false)
 
     useEffect(() => {
         if (selected_channel) {
-            const apiBaseUrl = appConfig.api_base_url
-
-            fetch(`${apiBaseUrl}/get_clips/${selected_channel}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setClips(result)
-                },
-                (error) => {
-                    setError(error)
-                }
-            )
-
-            fetch(`${apiBaseUrl}/get_subtitles/${selected_channel}`)
-            .then(res => res.json())
-            .then(
-                (result) => {
-                    setSubtitles(result)
-                },
-                (error) => {
-                    setError(error)
-                }
-            )
+            setIsChannelSelected(true)
         }
     }, [selected_channel])
 
-    if (error) {
-        return (
-            <div>
-                {error.message}
-            </div>
-        )
-    }
-    else {
-        return (
-            <div id="media-content">
-                <div id='clip-list-container'>
-                    <table id="clip-list">
+    if (document.getElementById("channelList") != null) {
+        if (document.getElementById("channelList").hasChildNodes && !isChannelSelected) {
+            return (
+                <Container className="selection-text-message centralized-content">Select channel from channel list</Container>
+            )
+        }
+        else {
+            return (
+                <div id="media-content">
+                    <div id='clip-list-container'>
+                        <table id="clip-list">
+                            <thead>
+                                <tr>
+                                    <th className="media-list-header">Clips:</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {
+                                    props.selected_channel.channelClips.map((clip, index) => {
+                                        return (
+                                            <div>
+                                                <tr key={index}>
+                                                    <td><span><img className="icon" src={videoimg} alt=""></img>{clip}</span></td>
+                                                </tr>
+                                            </div>
+                                            )
+                                        }
+                                    )
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                    <div id='subtitle-list-container'>
+                    <table id="subtitle-list">
                         <thead>
                             <tr>
-                                <th>Clips:</th>
+                                <th className="media-list-header">Subtitles:</th>
                             </tr>
                         </thead>
                         <tbody>
                             {
-                                clips.map((clip, index) => {
+                                props.selected_channel.channelSubtitles.map((subtitle, index) => {
                                     return (
                                         <div>
                                             <tr key={index}>
-                                                <td><span><img className="icon" src={videoimg} alt=""></img>{clip}</span></td>
+                                                <td><span><img className="icon" src={subtitleimg} alt=""></img>{subtitle}</span></td>
                                             </tr>
                                         </div>
                                         )
@@ -70,32 +68,22 @@ export default function MediaList (props) {
                                 )
                             }
                         </tbody>
-                    </table>
-                </div>
-                <div id='subtitle-list-container'>
-                <table id="subtitle-list">
-                    <thead>
-                        <tr>
-                            <th>Subtitles:</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {
-                            subtitles.map((subtitle, index) => {
-                                return (
-                                    <div>
-                                        <tr key={index}>
-                                            <td><span><img className="icon" src={subtitleimg} alt=""></img>{subtitle}</span></td>
-                                        </tr>
-                                    </div>
-                                    )
-                                }
-                            )
-                        }
-                    </tbody>
-                    </table>
-                </div>
-            </div>
+                        </table>
+                    </div>
+                </div>        
+            )
+        }
+    }
+    else {
+        return (
+            <Container style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "10%"}}>
+                <Container>
+                    <img alt="" src={loading}></img>
+                </Container>
+                <Container style={{ marginLeft: "75px", fontFamily: "Courier New, monospace" }}>
+                    Your subtitles are on the way..
+                </Container>
+            </Container>
         )
     }
 }

@@ -9,6 +9,9 @@ CHANNEL_SUBTITLE_SRC_DIR_CFG_KEY = 'channelSubtitleSourceDirectory'
 CHANNEL_SUBTITLE_LANGUAGES_CFG_KEY = 'channelSubtitleLanguages'
 CHANNEL_IMAGE_NAME_CFG_KEY = 'channelImageName'
 
+CLIP_QUERY_TARGET = 'clips'
+SUBTITLE_QUERY_TARGET = 'subtitles'
+
 class TVChannel:
     def __init__(self, channel_name, channel_clip_dir, channel_sub_dir, channel_sub_src_dir, subtitle_languages, image_name):
         self.channel_name = channel_name
@@ -39,8 +42,8 @@ class TVChannel:
         return tv_channels
 
     def refresh_state(self):
-        self.clips = get_media_files_from_server(self.channel_clip_dir, 'clips')
-        self.subtitles_on_server = get_media_files_from_server(self.channel_sub_dir, 'subtitles')
+        self.clips = get_media_files_from_server(self.channel_clip_dir, CLIP_QUERY_TARGET)
+        self.subtitles_on_server = get_media_files_from_server(self.channel_sub_dir, SUBTITLE_QUERY_TARGET)
         self.subtitles_on_source = get_subtitle_files_from_source(self.channel_sub_src_dir)
 
 TV_CHANNELS_STATE = TVChannel.get_tv_channels(PROVIDER_CONFIG)

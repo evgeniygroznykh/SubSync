@@ -8,32 +8,41 @@ import MediaList from './MediaList'
 export default function ChannelList() {
     const [error, setError] = useState(null)
     const [channels, setChannels] = useState([])
-    const [selectedChannel, setSelectedChannel] = useState(channels[0])
+    const [selectedChannelName, setSelectedChannelName] = useState(null)
+    const apiBaseUrl = appConfig.api_base_url
+    const apiPollPeriod = appConfig.api_poll_period_ms
+    const endpoint = '/get_channels'
 
     function selectChannel(event) {
-        setSelectedChannel(event.target.id)
+        setSelectedChannelName(event.target.id)
     }
 
-    useEffect(() => {
-        const apiBaseUrl = appConfig.api_base_url
-
-        fetch(apiBaseUrl + '/get_channels')
+    function pollApi() {
+        fetch(apiBaseUrl + endpoint)
         .then(res => res.json())
         .then(
             (result) => {
                 setChannels(result)
+                setError(null)
             },
             (error) => {
+                setChannels([])
                 setError(error)
             }
         )
-    }, [])
+    }
 
-    if (error) {
+    useEffect(() => {
+        let timer = setTimeout(() => pollApi(), apiPollPeriod)
+
+        return () => {
+            clearTimeout(timer)
+        }
+    }, [channels, selectedChannelName])
+
+    if (error || channels === []) {
         return (
-            <div>
-                {error.message}
-            </div>
+            <Container style={{ width: "100vw", display: "flex", alignItems: "center", justifyContent: "center", marginTop: "10%"}}>API is down: {error.message}</Container>
         )
     }
     else {
@@ -53,7 +62,7 @@ export default function ChannelList() {
                         </ul>
                     </Container>
                 </Container>
-                <MediaList selected_channel={selectedChannel}/>
+                <MediaList selected_channel={channels.filter(channel => channel.channelName === selectedChannelName)[0]}/>
             </Container>
         )
     }
