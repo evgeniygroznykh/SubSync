@@ -15,6 +15,7 @@ export default function ChannelList() {
 
     function selectChannel(event) {
         setSelectedChannelName(event.target.id)
+        pollApi()
     }
 
     function pollApi() {
@@ -33,12 +34,12 @@ export default function ChannelList() {
     }
 
     useEffect(() => {
-        let timer = setTimeout(() => pollApi(), apiPollPeriod)
-
-        return () => {
-            clearTimeout(timer)
-        }
-    }, [channels, selectedChannelName])
+        const id = setInterval(
+            () => pollApi()
+        , 5000);
+      
+        return () => clearInterval(id);  
+      }, []);
 
     if (error || channels === []) {
         return (
