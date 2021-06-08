@@ -37,7 +37,16 @@ export default function MediaList (props) {
                                         return (
                                             <div>
                                                 <tr key={index}>
-                                                    <td><span><img className="icon" src={videoimg} alt=""></img>{clip}</span></td>
+                                                    <td>
+                                                        <span style={{ display: "inline-block", width: "150px" }}>
+                                                            <img className="icon" src={videoimg} alt=""></img>
+                                                                {clip.clip_name}
+                                                        </span>
+                                                        <span>
+                                                            <input type="checkbox" checked={clip.has_sub_on_m}></input>
+                                                            <input type="checkbox" checked={clip.has_sub_on_b}></input>
+                                                        </span>
+                                                    </td>
                                                 </tr>
                                             </div>
                                             )
@@ -60,7 +69,7 @@ export default function MediaList (props) {
                                     return (
                                         <div>
                                             <tr key={index}>
-                                                <td><span><img className="icon" src={subtitleimg} alt=""></img>{subtitle}</span></td>
+                                                <td><span><img className="icon" src={subtitleimg} alt=""></img>{subtitle.sub_name}</span></td>
                                             </tr>
                                         </div>
                                         )

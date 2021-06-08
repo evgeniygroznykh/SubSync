@@ -1,11 +1,11 @@
+# IDEA files
+.idea
+
 # Application log files
 logs/
 
 # Image folder
 img/
-
-# Configuration files
-config.json
 
 # Node modules
 node_modules/

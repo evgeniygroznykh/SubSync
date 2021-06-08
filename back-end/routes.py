@@ -1,6 +1,5 @@
 from flask import Blueprint, jsonify
-from config import PROVIDER_CONFIG, save_config
-from file_handler import get_media_files_from_server, get_subtitle_files_from_source
+from file_handler import get_subtitle_files_from_source
 from models.tv_channel import TV_CHANNELS_STATE
 import os
 
@@ -19,8 +18,8 @@ ROUTE_BLUEPRINTS.append(get_channels)
 @get_channels.route('/get_channels')
 def get_channels():
     return jsonify([{"channelName" : channel.channel_name, "channelImage" : channel.channel_image_name,
-                        "channelClips": channel.clips,
-                        "channelSubtitles": channel.subtitles_on_server}
+                        "channelClips": [c.toJSON() for c in sorted(channel.clips, key=lambda k: k.clip_name)],
+                        "channelSubtitles": [s.toJSON() for s in sorted(channel.subtitles, key=lambda k: k.sub_name)]}
                          for channel in TV_CHANNELS_STATE])
     
 get_subtitles_on_src = Blueprint("get_subtitles_on_src", __name__)

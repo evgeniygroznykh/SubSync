@@ -36,7 +36,7 @@ export default function ChannelList() {
     useEffect(() => {
         const id = setInterval(
             () => pollApi()
-        , 5000);
+        , apiPollPeriod);
       
         return () => clearInterval(id);  
       }, []);

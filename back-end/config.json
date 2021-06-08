@@ -1,0 +1,40 @@
+{
+	"tv_channels":
+	[
+		{
+		"channelName":"TNT",
+		"channelMainClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel1\\clip.dir",
+		"channelMainSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel1\\clip.dir\\subtitle.dir",
+		"channelBackupClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel3\\clip.dir",
+		"channelBackupSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel3\\clip.dir\\subtitle.dir",
+		"channelSubtitleSourceDirectory":"U:\\SubtitleSource",
+		"channelSubtitleLanguages":["RUS"],
+		"channelImageName":"tntlogo"
+		},
+		{
+		"channelName":"2x2",
+		"channelMainClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel2\\clip.dir",
+		"channelMainSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel2\\clip.dir\\subtitle.dir",
+		"channelBackupClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel4\\clip.dir",
+		"channelBackupSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel4\\clip.dir\\subtitle.dir",
+		"channelSubtitleSourceDirectory":"U:\\SubtitleSource",
+		"channelSubtitleLanguages":["RUS"],
+		"channelImageName":"_2x2logo"
+		},
+		{
+		"channelName":"Friday",
+		"channelMainClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel5\\clip.dir",
+		"channelMainSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel5\\clip.dir\\subtitle.dir",
+		"channelBackupClipDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel6\\clip.dir",
+		"channelBackupSubtitleDirectory":"\\\\tnt-tv\\dfsroot\\PersonalFolders\\GPMRTV\\Home_Areas\\eagroznykh\\System\\Desktop\\TestChannel6\\clip.dir\\subtitle.dir",
+		"channelSubtitleSourceDirectory":"U:\\SubtitleSource",
+		"channelSubtitleLanguages":["RUS", "GRE"],
+		"channelImageName":"fridaylogo"
+		}		
+	],
+	"logging": {
+		"logFolder": "C:\\Users\\eagroznykh\\SubSync\\logs",
+		"rotatingPeriodType": "midnight",
+		"rotatingPeriodValue": ""
+	}
+}

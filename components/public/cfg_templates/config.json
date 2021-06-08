@@ -1,0 +1,20 @@
+{
+	"tv_channels":
+	[
+		{
+		"channelName":"",
+		"channelMainClipDirectory":"",
+		"channelMainSubtitleDirectory":"",
+		"channelBackupClipDirectory":"",
+		"channelBackupSubtitleDirectory":"",
+		"channelSubtitleSourceDirectory":"",
+		"channelSubtitleLanguages":[],
+		"channelImageName":""
+		}	
+	],
+	"logging": {
+		"logFolder": "",
+		"rotatingPeriodType": "",
+		"rotatingPeriodValue": ""
+	}
+}

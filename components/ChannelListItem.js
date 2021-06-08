@@ -11,7 +11,7 @@ import fridaylogo from './img/fridaylogo.jpg'
 export default function ChannelListItem (props) {
     const img_container_style = {
         width: "100px",
-        height: "75px",
+        height: "80px",
         display: "flex", 
         alignItems: "center", 
         justifyContent: "center",
